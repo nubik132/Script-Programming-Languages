@@ -1,4 +1,4 @@
-const funcs = [f1,f2,f3,f4,f5]
+const funcs = [f1, f2, f3, f4, f5]
 
 function f1(str = " Куда идём мы с  Пяточком? на п остановку   за бычком.   ") {
     return str.trim().replace(/\s+/g, ' ').replace(/\s[^уавсояик\s]\s?[.,!?:-]?\s/g, " ").split(" ").length;
@@ -14,11 +14,13 @@ function f3(str = "Олесь, составь мне натальную карт
     let regex = /(\d{1,2}\.\d{1,2}.\d{1,4})|(\d{1,2} (Январ|Феврал|Март|Апрел|Ма|Июн|Июл|Август|Сентябр|Октябр|Ноябр|Декабр){1}[ая]? \d{1,4})/gi;
     return str.match(regex);
 }
-function f4() {
-    
+function f4(str = " У меня нет двух миллионов денег    ") {
+    let regex = /[^ ][\wА-я\W]+[^ ]/g
+    return str.match(regex)[0];
 }
-function f5() {
-    
+function f5(num = "24F") {
+    let regex = /[\dA-F]+/g;
+    return num === num.match(regex)[0];
 }
 
 function exec() {

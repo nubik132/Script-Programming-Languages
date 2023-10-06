@@ -1,0 +1,45 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+.task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 20px;
+  border: 1px solid black;
+  padding: 10px; }
+
+.table {
+  border: 1px solid black; }
+  .table__row {
+    padding: 1px;
+    border: 1px solid black; }
+  .table td {
+    border: 1px solid black;
+    min-width: 30px;
+    text-align: center; }
+
+.header-task {
+  text-align: center;
+  font-family: sans-serif; }
+
+.button-task {
+  margin-top: 10px;
+  background-color: #fff;
+  font-family: sans-serif;
+  border-radius: 5px;
+  padding: 5px; }
+
+.cell-class-input {
+  display: none; }

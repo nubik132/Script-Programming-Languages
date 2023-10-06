@@ -1,0 +1,54 @@
+body{
+    // text-align: center;
+    display: flex;
+    align-items: flex-start;
+}
+
+.task-1 {
+    &__table {}
+
+    &__button {
+
+    }
+}
+
+.task{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 20px;
+    border:  1px solid black;
+    padding: 10px;
+}
+
+.table {
+    border: 1px solid black;
+
+    &__row {
+        padding: 1px;
+        border: 1px solid black;
+    }
+
+    td{
+        border: 1px solid black;
+        min-width: 30px;
+        text-align: center;
+    }
+}
+
+.header-task{
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.button-task{
+    margin-top: 10px;
+    background-color: #fff;
+    font-family: sans-serif;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.cell-class-input{
+    display: none;
+}

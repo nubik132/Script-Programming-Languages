@@ -35,15 +35,25 @@ function f4_begin(tbody_id = "task_4_table") {
         for (const cell of row.children) {
             const input = document.createElement('input');
             input.type = "text";
-            input.addEventListener('submit', () => {
-                cell.innerHTML = input.value;
+            input.addEventListener('change', () => {
+                cell.innerText = input.value;
                 cell.append(input); 
+                input.classList.toggle("cell-class-input");
             });
+            
             input.className = "cell-class-input";
             cell.append(input);
-            cell.addEventListener('click', () => input.classList.toggle("cell-class-input"));
+            cell.addEventListener('click', () => {
+                input.classList.toggle("cell-class-input");
+                input.focus();
+            });
         }
     }
+}
+
+function f5(tbody_id = "task_4_table") {
+    const tbody = document.getElementById(tbody_id).children[0];
+    
 }
 
 function exec(){

@@ -51,9 +51,53 @@ function f4_begin(tbody_id = "task_4_table") {
     }
 }
 
-function f5(tbody_id = "task_4_table") {
+let lab5_cells = [];
+let lab6_cells = [];
+
+function f5_begin(tbody_id = "task_5_table", arr = lab5_cells) {
     const tbody = document.getElementById(tbody_id).children[0];
-    
+    for (const row of tbody.children) {
+        for (const cell of row.children) {
+            arr.push(cell);
+        }
+    }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+function f5(arr = lab5_cells) {
+    if(arr.length == 0) return;
+    let i = getRandomInt(lab5_cells.length);
+    let cell = arr[i];
+    cell.style = 'background-color: red';
+    arr.splice(i, 1);
+}
+
+function f6(arr = lab6_cells) {
+    if(arr.length == 0) return;
+    let cell = arr.shift();
+    cell.style = 'background-color: red';
+}
+
+let suits = ["clubs", "diamonds", "hearts", "spades"]
+let cards_names = ["ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king"]
+let cards = [];
+
+function f7_begin(arr = cards) {
+    for (const suit of suits) {
+        for (const card of cards_names) {
+            cards.push(`cards/${suit}_${card}.svg`);
+        }
+    }
+}
+
+function f7(cards_id = "cards") {
+    let cards_container = document.getElementById(cards_id);
+    for (const card of cards_container.children) {
+        card.setAttribute("src", cards[getRandomInt(cards.length)])
+    }
 }
 
 function exec(){
@@ -62,5 +106,7 @@ function exec(){
     }
 }
 f4_begin();
-
+f5_begin();
+f5_begin("task_6_table", lab6_cells);
+f7_begin();
 // exec()

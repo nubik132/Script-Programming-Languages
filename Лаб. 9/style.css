@@ -1,0 +1,57 @@
+body{
+    margin: 0;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    /* height: calc(100% - 70px); */
+    height: 100%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    margin: 35px;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.messages{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-text{
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.input-text input[type="text"]{
+    flex: 0 0 85%;
+}
+
+.input-text input[type="button"]{
+    flex: 1 0 auto;
+}
+
+.message{
+    padding: 8px 16px;
+    background: #57166b;
+    border-radius: 20px;
+    display: inline-block;
+    color: white;
+    font-family: sans-serif;
+}
+
+/* .messages:nth-child(even){
+    text-align: left;
+} */
+
+.messages div:nth-child(odd){
+    text-align: right;
+}

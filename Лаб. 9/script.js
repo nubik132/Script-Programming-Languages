@@ -20,6 +20,7 @@ function load(name) {
 function pressSendButton() {
     let text = getInputText(input_message);
     createMessage(text);
+    saveMessage(messages_storage, text);
     toggleDisabled(send_button);
     setTimeout(createAnswer, getRandomInt(wait_time));
     setInputText(input_message, "");
@@ -35,8 +36,6 @@ function createMessage(text) {
 
     message_box.appendChild(message);
     div_messages.appendChild(message_box);
-
-    saveMessage(messages_storage, text);
 }
 
 function getInputText(input) {

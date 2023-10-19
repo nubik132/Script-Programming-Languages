@@ -49,8 +49,8 @@ function game() {
     ball.style.top = "0px";
     ball.style.left = "0px";
 
-    let ball_trans_x = 3
-    let ball_trans_y = 3
+    let ball_trans_x = 8
+    let ball_trans_y = 8
 
     function ballMove() {
         function tryChangeDirection(player) {
@@ -78,18 +78,29 @@ function game() {
 
         if (getSide(ball, 'left') > border_x || getSide(ball, 'left') < -border_x) {
             if (getSide(ball, 'left') > 0) {                
-                score_2.innerText = +(score_1.innerText) + 1
+                score_1.innerText = parseInt(score_1.innerText) + 1
             }
             else{
-                score_1.innerText = +(score_2.innerText) + 1
+                score_2.innerText = parseInt(score_2.innerText) + 1
             }
             setSide(ball, 'top', '0px');
             setSide(ball, 'left', '0px');
 
             // ball_trans_x *= -1;
-            ball_trans_x = 3;
-            ball_trans_y = 3;
+            ball_trans_x = 8;
+            ball_trans_y = 8;
         }
+        if(score_1.innerText === "3"){
+            winner_1.style.display = "block";
+            ball_trans_x = 0;
+            ball_trans_y = 0;
+        }
+        if (score_2.innerText === "3"){
+            winner_2.style.display = "block";
+            ball_trans_x = 0;
+            ball_trans_y = 0;
+        }
+        
 
 
         Move(ball, ball_trans_y, 'top');
@@ -111,6 +122,7 @@ function getSide(elem, side) {
 function setSide(elem, side, value) {
     elem.style[side] = value;
 }
+
 
 const player_speed = 5;
 

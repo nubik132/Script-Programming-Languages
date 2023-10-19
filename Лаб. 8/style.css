@@ -53,3 +53,16 @@
     border-radius: 50%;
     background: #000;
 }
+
+.winners{
+    font-size: 4em;
+    vertical-align: middle;
+    line-height: 90px;  
+    text-align: center;
+}
+.winner-1{
+    display: none;
+}
+.winner-2{
+    display: none;
+}

@@ -10,7 +10,18 @@
 
 <body>
     <div class="container">
-        <div class="form">
+            <div class="leave-button" onclick="leave()">←Выйти</div>
+            <div class="leave-form" id="leave-form" style="display: none;">
+                <span class="leave-form__text">Поставьте нам оценку!</span>
+                <div class="leave_form__stars">
+                    <input type="button" class="leave-from__star" value="1">
+                    <input type="button" class="leave-from__star" value="2">
+                    <input type="button" class="leave-from__star" value="3">
+                    <input type="button" class="leave-from__star" value="4">
+                    <input type="button" class="leave-from__star" value="5">
+                </div>
+            </div>
+            <div class="form">
             <div class="messages" id="messages"></div>
             <div class="input-text">
                 <input type="text" name="" id="input_message">

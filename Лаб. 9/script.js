@@ -1,9 +1,16 @@
 let div_messages = document.getElementById("messages");
 let send_button = document.getElementById("send_button");
-// const wait_time = 5000;
 const wait_time = 0;
 const messages_storage_name = "messages_storage";
 let messages_storage = { storage: [] };
+const leave_form = document.getElementById('leave-form');
+for (const star of leave_form.children[1].children) {
+    star.addEventListener('click', () => {window.close()});
+}
+
+window.onbeforeunload = function() {
+    return 'hello';
+  } 
 
 document.addEventListener('wheel', e => e.preventDefault(), { passive: false });
 document.addEventListener('keydown', (e) => {
@@ -12,17 +19,7 @@ document.addEventListener('keydown', (e) => {
     }
 }, { passive: false });
 
-// window.addEventListener('scroll', e => {
-//     window.scrollTo({top: 0})
-// })
-
-// document.addEventListener('wheel', (e) => {
-//     e.preventDefault()
-
-//     // if (e.key == "pageUp" || e.key == "pageDown") {
-//     //     e.preventDefault()
-//     // }
-// })
+window.onbeforeunload = leave;
 
 function loadMessages(storage) {
     let messages = load(storage);
@@ -102,3 +99,11 @@ function save(name, value) {
 }
 
 loadMessages(messages_storage_name);
+
+function leave() {
+    showLeaveFrom();
+}
+
+function showLeaveFrom() {
+    leave_form.style.display = "flex";
+}

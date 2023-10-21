@@ -3,18 +3,40 @@ let send_button = document.getElementById("send_button");
 // const wait_time = 5000;
 const wait_time = 0;
 const messages_storage_name = "messages_storage";
-let messages_storage = {storage: []};
+let messages_storage = { storage: [] };
+
+document.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+document.addEventListener('keydown', (e) => {
+    if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+        e.preventDefault()
+    }
+}, { passive: false });
+
+// window.addEventListener('scroll', e => {
+//     window.scrollTo({top: 0})
+// })
+
+// document.addEventListener('wheel', (e) => {
+//     e.preventDefault()
+
+//     // if (e.key == "pageUp" || e.key == "pageDown") {
+//     //     e.preventDefault()
+//     // }
+// })
 
 function loadMessages(storage) {
-    messages_storage = load(storage);
-    for (const message of messages_storage.storage) {
-        createMessage(message);
+    let messages = load(storage);
+    if (messages) {
+        messages_storage = messages;
+        for (const message of messages_storage.storage) {
+            createMessage(message);
+        }
     }
 }
 
 function load(name) {
     let json_data = JSON.parse(localStorage.getItem(name));
-    return json_data; 
+    return json_data;
 }
 
 function pressSendButton() {
@@ -29,7 +51,7 @@ function pressSendButton() {
 function createMessage(text) {
     let message_box = document.createElement('div');
     message_box.classList.add("message-box");
-    
+
     let message = document.createElement('div');
     message.classList.add("message");
     message.innerText = text;
@@ -58,9 +80,10 @@ function createAnswer() {
     let answer = getRandomAnswer(answers);
     createMessage(answer);
     unlockSendButton(send_button);
+    saveMessage(messages_storage, answer);
 }
 
-function unlockSendButton(send_button){
+function unlockSendButton(send_button) {
     toggleDisabled(send_button);
 }
 

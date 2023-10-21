@@ -1,6 +1,6 @@
 let div_messages = document.getElementById("messages");
 let send_button = document.getElementById("send_button");
-const wait_time = 0;
+const wait_time = 5000;
 const messages_storage_name = "messages_storage";
 let messages_storage = { storage: [] };
 const leave_form = document.getElementById('leave-form');

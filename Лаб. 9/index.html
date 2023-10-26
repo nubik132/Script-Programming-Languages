@@ -10,15 +10,15 @@
 
 <body>
     <div class="container">
-            <div class="leave-button" onclick="leave()">←Выйти</div>
+            <a href="#" class="leave-button" onclick="leave()">←Выйти</a>
             <div class="leave-form" id="leave-form" style="display: none;">
                 <span class="leave-form__text">Поставьте нам оценку!</span>
                 <div class="leave_form__stars">
-                    <input type="button" class="leave-from__star" value="1">
-                    <input type="button" class="leave-from__star" value="2">
-                    <input type="button" class="leave-from__star" value="3">
-                    <input type="button" class="leave-from__star" value="4">
-                    <input type="button" class="leave-from__star" value="5">
+                    <input type="button" class="leave-from__star" value="1" onclick="hideLeaveFrom()">
+                    <input type="button" class="leave-from__star" value="2" onclick="hideLeaveFrom()">
+                    <input type="button" class="leave-from__star" value="3" onclick="hideLeaveFrom()">
+                    <input type="button" class="leave-from__star" value="4" onclick="hideLeaveFrom()">
+                    <input type="button" class="leave-from__star" value="5" onclick="hideLeaveFrom()">
                 </div>
             </div>
             <div class="form">

@@ -12,6 +12,7 @@ let border_y = height / 2 - 10;
 
 let isAiOn = confirm("1 игрок?");
 
+let start_direction = 1;
 
 document.addEventListener("keydown", (e) => {
     if (e.code == "KeyW") {
@@ -49,8 +50,8 @@ function game() {
     ball.style.top = "0px";
     ball.style.left = "0px";
 
-    let ball_trans_x = 8
-    let ball_trans_y = 8
+    let ball_trans_x = 5
+    let ball_trans_y = 5
 
     function ballMove() {
         function tryChangeDirection(player) {
@@ -61,11 +62,11 @@ function game() {
             }
         }
 
-        if (getSide(ball, 'left') < -border_x + 15) {
+        if (getSide(ball, 'left') < -border_x + 25) {
             tryChangeDirection(player_1)
         }
 
-        if (getSide(ball, 'left') > border_x - 15) {
+        if (getSide(ball, 'left') > border_x - 25) {
             tryChangeDirection(player_2)
         }
 
@@ -86,9 +87,10 @@ function game() {
             setSide(ball, 'top', '0px');
             setSide(ball, 'left', '0px');
 
+            start_direction *= -1;
             // ball_trans_x *= -1;
-            ball_trans_x = 8;
-            ball_trans_y = 8;
+            ball_trans_x = 5 * start_direction;
+            ball_trans_y = 5;
         }
         if(score_1.innerText === "3"){
             winner_1.style.display = "block";

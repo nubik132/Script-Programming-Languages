@@ -7,6 +7,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100%;
+    background: #F5C400;
 }
 
 .leave-button{
@@ -26,7 +27,12 @@ body{
     align-items: center;
     left: calc(50vw - 75px);
     top: calc(50vh - 20px);
-    
+    padding: 10px;
+    background: #756A3B;
+}
+
+.leave-from__star{
+    border-radius: 50%;
 }
 
 .form{
@@ -38,6 +44,7 @@ body{
     border-radius: 2px;
     padding: 10px;
     justify-content: space-between;
+    background: #000CF5;
 }
 
 .messages{
@@ -61,10 +68,10 @@ body{
 
 .message{
     padding: 8px 16px;
-    background: #57166b;
+    background: #0FF500;
     border-radius: 20px;
     display: inline-block;
-    color: white;
+    color: #F50092;
 }
 
 /* .messages:nth-child(even){

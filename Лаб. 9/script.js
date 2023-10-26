@@ -8,7 +8,10 @@ for (const star of leave_form.children[1].children) {
     star.addEventListener('click', () => {window.close()});
 }
 
+input_message.addEventListener('change', () => pressSendButton());
+
 window.onbeforeunload = function() {
+    showLeaveFrom();
     return 'hello';
   } 
 
@@ -19,7 +22,7 @@ document.addEventListener('keydown', (e) => {
     }
 }, { passive: false });
 
-window.onbeforeunload = leave;
+// window.onbeforeunload = leave;
 
 function loadMessages(storage) {
     let messages = load(storage);
@@ -106,4 +109,9 @@ function leave() {
 
 function showLeaveFrom() {
     leave_form.style.display = "flex";
+}
+
+function hideLeaveFrom() {
+    leave_form.style.display = "none";
+    window.onbeforeunload = null;
 }

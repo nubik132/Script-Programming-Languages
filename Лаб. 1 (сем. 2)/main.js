@@ -56,31 +56,39 @@ function removeProduct(product) {
     console.log(product);
 }
 
+function decorateHtml(element, tag) {
+    let tagHtml = document.createElement(tag);
+    tagHtml.append(element);
+    return tagHtml;
+}
+
 saveUser(alexUser);
 saveUser(mariaUser);
 
-let main = document.querySelector("main");
+let table = document.querySelector("table");
 
 for (const category of categories) {
-    let categoryHtml = document.createElement("div");
-    let categoryNameHtml = document.createElement("h2");
+    let categoryHtml = document.createElement("tr");
+    let categoryNameHtml = document.createElement("td");
+    categoryNameHtml.setAttribute("colspan", 3)
     categoryNameHtml.innerText = category.name
     categoryHtml.appendChild(categoryNameHtml);
+    table.appendChild(categoryHtml);
 
     for (const product of category.products) {
-        let productDivHtml = document.createElement("div");
-        productDivHtml.classList.add("product");
+        let productRowHtml = document.createElement("tr");
+        productRowHtml.classList.add("product");
 
-        let productHtml = document.createElement("h3");
+        let productHtml = document.createElement("td");
         productHtml.innerText = product.name;
 
-        productDivHtml.appendChild(productHtml);
-        productDivHtml.appendChild(createPlusButton(product));
-        productDivHtml.appendChild(createMinusButton(product));
+        productRowHtml.appendChild(productHtml);
+        let td = decorateHtml(createPlusButton(product), "td");
+        productRowHtml.appendChild(td);
+        
+        productRowHtml.appendChild(decorateHtml(createMinusButton(product), "td"));
 
-        categoryHtml.appendChild(productDivHtml);
+        table.appendChild(productRowHtml);
     }
-
-    main.appendChild(categoryHtml);
-
 }
+

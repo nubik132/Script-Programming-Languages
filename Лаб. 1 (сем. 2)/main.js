@@ -70,6 +70,7 @@ let table = document.querySelector("table");
 for (const category of categories) {
     let categoryHtml = document.createElement("tr");
     let categoryNameHtml = document.createElement("td");
+    categoryNameHtml.classList.add("category");
     categoryNameHtml.setAttribute("colspan", 3)
     categoryNameHtml.innerText = category.name
     categoryHtml.appendChild(categoryNameHtml);

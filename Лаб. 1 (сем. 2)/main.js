@@ -48,11 +48,24 @@ function createMinusButton(product) {
 
 function addProduct(product) {
     checkAutorization();
+    let user = JSON.parse(getCookie(getCookie("login")));
+    user.basket.products.push(product);
+    saveNewUser(user);
     console.log(product);
 }
 
 function removeProduct(product) {
     checkAutorization();
+    let user = JSON.parse(getCookie(getCookie("login")));
+    let jsonProduct = JSON.stringify(product);
+    let products = user.basket.products;
+    for (const _product of products) {
+        if (JSON.stringify(_product) == jsonProduct) {
+            products.splice(products.indexOf(_product), 1);
+            break;
+        }
+    }
+    saveNewUser(user);
     console.log(product);
 }
 
@@ -86,7 +99,7 @@ for (const category of categories) {
         productRowHtml.appendChild(productHtml);
         let td = decorateHtml(createPlusButton(product), "td");
         productRowHtml.appendChild(td);
-        
+
         productRowHtml.appendChild(decorateHtml(createMinusButton(product), "td"));
 
         table.appendChild(productRowHtml);

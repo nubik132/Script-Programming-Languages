@@ -1,6 +1,8 @@
 let main = document.querySelector("main");
 
-let basket = getCookie(getCookie("login")).basket;
+let login = getCookie("login");
+let user = getCookie(login)
+let basket = (JSON.parse(user)).basket;
 
 let table = document.querySelector("table");
 
@@ -29,9 +31,11 @@ function init(products) {
         count.innerText = products[key];
         productRowHtml.appendChild(count);
 
-        productRowHtml.appendChild(decorateHtml(createPlusButton(product), "td"));
-        productRowHtml.appendChild(decorateHtml(createMinusButton(product), "td"));
+        // productRowHtml.appendChild(decorateHtml(createPlusButton(product), "td"));
+        // productRowHtml.appendChild(decorateHtml(createMinusButton(product), "td"));
 
         table.appendChild(productRowHtml);
     }
 }
+
+init(countProducts(basket.products))

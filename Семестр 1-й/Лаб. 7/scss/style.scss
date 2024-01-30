@@ -1,23 +1,22 @@
-body{
+body {
     // text-align: center;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
 }
 
 .task-1 {
     &__table {}
 
-    &__button {
-
-    }
+    &__button {}
 }
 
-.task{
+.task {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     margin: 20px;
-    border:  1px solid black;
+    border: 1px solid black;
     padding: 10px;
 }
 
@@ -29,19 +28,19 @@ body{
         border: 1px solid black;
     }
 
-    td{
+    td {
         border: 1px solid black;
         min-width: 30px;
         text-align: center;
     }
 }
 
-.header-task{
+.header-task {
     text-align: center;
     font-family: sans-serif;
 }
 
-.button-task{
+.button-task {
     margin-top: 10px;
     background-color: #fff;
     font-family: sans-serif;
@@ -49,6 +48,6 @@ body{
     padding: 5px;
 }
 
-.cell-class-input{
+.cell-class-input {
     display: none;
 }

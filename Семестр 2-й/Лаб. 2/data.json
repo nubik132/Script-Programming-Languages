@@ -1,0 +1,42 @@
+{
+    "Игорь": {
+        "specie": "Змея",
+        "name": "Игорь",
+        "cell": "glass"
+    },
+    "Геша": {
+        "specie": "Змея",
+        "name": "Геша",
+        "cell": "glass"
+    },
+    "Гатя": {
+        "specie": "Змея",
+        "name": "Гатя",
+        "cell": "glass"
+    },
+    "Том": {
+        "specie": "Хомяк",
+        "name": "Том",
+        "cell": "glass"
+    },
+    "Тюбик": {
+        "specie": "Хомяк",
+        "name": "Тюбик",
+        "cell": "glass"
+    },
+    "Тапок": {
+        "specie": "Хомяк",
+        "name": "Тапок",
+        "cell": "glass"
+    },
+    "Тигро": {
+        "specie": "Тигр",
+        "name": "Тигро",
+        "cell": "cell"
+    },
+    "Белик": {
+        "specie": "Тигр",
+        "name": "Белик",
+        "cell": "cell"
+    }
+}

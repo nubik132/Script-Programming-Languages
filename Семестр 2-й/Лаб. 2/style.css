@@ -1,9 +1,14 @@
-.specie__row {}
-
-.specie__cell {}
-
-.animal_row {}
-
-.animal_name {}
-
-.animal_cell {}
+.animals__table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    max-width: 600px;
+    width: 100%;
+}
+.animals__table thead th{
+    padding: 3px;
+    border: 1px solid black;
+}
+.animals__table tr td{
+    padding: 3px;
+    border: 1px solid black;
+}

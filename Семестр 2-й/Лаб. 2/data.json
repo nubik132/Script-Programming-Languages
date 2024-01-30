@@ -2,41 +2,49 @@
     "Игорь": {
         "specie": "Змея",
         "name": "Игорь",
-        "cell": "glass"
+        "cell": "glass",
+        "status": "Жив"
     },
     "Геша": {
         "specie": "Змея",
         "name": "Геша",
-        "cell": "glass"
+        "cell": "glass",
+        "status": "Жив"
     },
     "Гатя": {
         "specie": "Змея",
         "name": "Гатя",
-        "cell": "glass"
+        "cell": "glass",
+        "status": "Жив"
     },
     "Том": {
         "specie": "Хомяк",
         "name": "Том",
-        "cell": "glass"
+        "cell": "glass",
+        "status": "Жив"
     },
     "Тюбик": {
         "specie": "Хомяк",
         "name": "Тюбик",
-        "cell": "glass"
+        "cell": "glass",
+        "status": "Жив"
     },
     "Тапок": {
         "specie": "Хомяк",
         "name": "Тапок",
-        "cell": "glass"
+        "cell": "glass",
+        "status": "Жив"
     },
     "Тигро": {
         "specie": "Тигр",
         "name": "Тигро",
-        "cell": "cell"
+        "cell": "cell",
+        "status": "Жив"
     },
     "Белик": {
         "specie": "Тигр",
         "name": "Белик",
-        "cell": "cell"
+        "cell": "cell",
+        "status": "Жив"
     }
 }

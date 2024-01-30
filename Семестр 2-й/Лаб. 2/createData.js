@@ -1,15 +1,16 @@
 const fs = require('fs');
 
 class Animal {
-    constructor(specie, name, cell) {
+    constructor(specie, name, cell, status = "Жив") {
         this.specie = specie;
         this.name = name;
         this.cell = cell;
+        this.status = status;
     }
 }
 
 class Cell {
-    constructor(name, number, type) {
+    constructor(name, number, animals) {
         this.number = number;
         this.name = name;
         this.type = type;
@@ -23,6 +24,7 @@ const cellTypes = {
 
 function createData() {
     let data = {};
+    data.animals = {}
     let animals = [["Змея", cellTypes.GLASS, ["Игорь", "Геша", "Гатя"]],
     ["Хомяк", cellTypes.GLASS, ["Том", "Тюбик", "Тапок"]],
     ["Тигр", cellTypes.CELL, ["Тигро", "Белик"]]]
@@ -30,9 +32,16 @@ function createData() {
     for (const animal of animals) {
         console.log(animal[2]);
         for (const name of animal[2]) {
-            data[name] = new Animal(animal[0], name, animal[1]);
+            data.animals[name] = new Animal(animal[0], name, animal[1]);
         }
     }
+
+    data.cells = {};
+
+    for
+
+
+
     return data;
 }
 function writeData() {

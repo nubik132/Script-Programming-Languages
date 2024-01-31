@@ -1,34 +1,24 @@
-const http = require("http");
-const fs = require("fs");
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
-http.createServer(server).listen(3000, () => console.log("Server started at 3000"));
+const app = express();
+const port = 3000;
+app.use(express.static("./"));
+app.get('/api/zoo', (req, res) => {
+  fs.readFile(path.join(__dirname, 'zooDatabase.json'), 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
 
+    const zooDatabase = JSON.parse(data);
+    res.json(zooDatabase);
+  });
+});
 
+app.get('/', (req, res) => { res.sendFile(__dirname + "/index.html")})
 
-function server(request, response) {
-    openPage(request, response, () => {
-        let zooData = getZooData();
-        console.log("zoo: " + zooData);
-    });
-
-}
-
-function openPage(request, response, callback) {
-    const filePath = request.url.substring(1);
-    fs.access(filePath, fs.constants.R_OK, err => {
-        // если произошла ошибка - отправляем статусный код 404
-        console.log(err);
-        if (err) {
-            response.statusCode = 404;
-            response.end("Resourse not found!");
-        }
-        else {
-            callback();
-            fs.createReadStream(filePath).pipe(response);
-        }
-    });
-}
-
-function getZooData() {
-    return fs.readFileSync("./data.json");
-}
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});

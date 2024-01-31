@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Зоопарк Страж</title>
 </head>
-<body>
-    <div class="container">
-        <h1>Отчёт</h1>
-        <h3 id="date">Дата: {date}</h3>
-        <h3 id="date">Дата: {date}</h3>
-        <table id="animal_table">
-            <!-- <tr><td>input:checkbox</td><td>{name}</td><td>{specie}</td><td>{cell}</td><td>{status}</td></tr> -->
-            <!-- ... -->
+  <script src="/script.js"></script>
+  <body>
+
+  <h1>Зоопарк Страж</h1>
+
+  <label for="searchInput">Поиск по базе:</label>
+  <input type="text" id="searchInput" oninput="searchAnimals()">
+
+    <div class="animals">
+        <table class="animals__table" id="animals_table">
+            <thead><th>Имя</th><th>Вольер</th><th>Статус</th><th>Кол-во</th><th>Имена</th></thead>
         </table>
     </div>
+
+  <div id="reportForm">
+    <h2>Отчет по вольерам</h2>
+    <div>
+        <label for="dateInput">Дата составления отчета:</label>
+        <input type="text" id="dateInput">
+    </div>
+
+    <div>
+        <label for="enclosureInput">Название и номер вольера:</label>
+        <input type="text" id="enclosureInput">
+    </div>
+
+    <div>
+        <label for="possibleAnimals">Возможные обитатели вольера:</label>
+        <textarea id="possibleAnimals"></textarea>
+    </div>
+
+    <div>
+        <label for="currentAnimals">Текущие виды животных и их имена в вольере:</label>
+        <textarea id="currentAnimals"></textarea>
+    </div>
+
+    <div>
+        <label for="animalCount">Количество животных в вольере:</label>
+        <input type="number" id="animalCount">
+    </div>
+
+    <div>
+        <label for="elephantAction">Какого черта в вольере с пингвинами делает слон:</label>
+        <textarea id="elephantAction"></textarea>
+    </div>
+
+    <div><button onclick="generateReport()">Вывести отчет</button></div>
+  </div>
+
+
 </body>
 </html>

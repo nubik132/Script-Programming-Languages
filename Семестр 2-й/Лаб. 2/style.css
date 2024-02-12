@@ -1,22 +1,62 @@
-.animals__table{
+.animals__table {
     border: 1px solid black;
     border-collapse: collapse;
-    max-width: 600px;
+    --max-width-minus-center: calc(100hv - 800px);
+    max-width: calc(var(--max-width-minus-center) / 2);
     width: 100%;
 }
-.animals__table thead th{
+
+.animals__table thead th {
     padding: 3px;
     border: 1px solid black;
 }
-.animals__table tr td{
+
+.animals__table tr td {
     padding: 3px;
     border: 1px solid black;
 }
-#reportForm{
-    margin: auto;
+
+#reportForm {
+    margin: 0 auto;
+    max-width: 800px;
 }
-#reportForm div{
+
+#reportForm div {
+    margin: 8px 0;
     display: flex;
     width: 700px;
     justify-content: space-between;
+}
+
+#reportForm div label {
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#reportForm div:last-child {
+    text-align: center;
+}
+
+#reportForm div button {
+    display: inline;
+}
+
+.animals__section {
+    float: left;
+    width: 400px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.search {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+#searchInput {
+    margin-left: 5px;
+    flex: 1 0;
 }

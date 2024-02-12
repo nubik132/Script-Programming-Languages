@@ -51,7 +51,7 @@ function searchAnimals() {
     td_name.innerText = animal.name;
     td_enclosure.innerText = animal.enclosure;
     td_status.innerText = animal.status;
-    td_names.innerText = animal.names;
+    td_names.innerText = animal.names.join(', ');
     td_count.innerText = animal.count;
     tr.appendChild(td_name);
     tr.appendChild(td_enclosure);
@@ -65,7 +65,7 @@ function searchAnimals() {
 const select = document.getElementById("animal_select");
 console.log(document);
 function populateSelect() {
-const existingEnclosures = new Set();
+  const existingEnclosures = new Set();
   console.log(zooDatabase);
   zooDatabase.forEach(animal => {
     // Проверяем, есть ли такой вольер уже в Set
@@ -82,29 +82,53 @@ const existingEnclosures = new Set();
     }
   });
 }
+var countAnimals = 0;
+
 console.log(select);
 select.addEventListener('change', () => {
-  const enclosureTypes = {};
-  // Для каждого объекта в массиве данных
-  zooDatabase.forEach(animal => {
-    // Проверяем, существует ли вольер в объекте enclosureTypes
-    if (enclosureTypes.hasOwnProperty(animal.enclosure)) {
-      // Если вольер уже существует, добавляем тип животного в массив
-      enclosureTypes[animal.enclosure].push(animal.name);
-    } else {
-      // Если вольер еще не существует, создаем новый массив с текущим типом животного
-      enclosureTypes[animal.enclosure] = [animal.name];
-    }
-  });
+  // const enclosureTypes = {};
+  // // Для каждого объекта в массиве данных
+  // zooDatabase.forEach(animal => {
+  //   // Проверяем, существует ли вольер в объекте enclosureTypes
+  //   if (enclosureTypes.hasOwnProperty(animal.enclosure)) {
+  //     // Если вольер уже существует, добавляем тип животного в массив
+  //     enclosureTypes[animal.enclosure].push(animal.name);
+  //   } else {
+  //     // Если вольер еще не существует, создаем новый массив с текущим типом животного
+  //     enclosureTypes[animal.enclosure] = [animal.name];
+  //   }
+  // });
 
-  // Преобразуем объект enclosureTypes в строку
-  let resultString = '';
-  for (const enclosure in enclosureTypes) {
-    if (enclosureTypes.hasOwnProperty(enclosure)) {
-      resultString += `${enclosure} - ${enclosureTypes[enclosure].join(', ')}\n`;
+  // // Преобразуем объект enclosureTypes в строку
+  // let resultString = '';
+  // for (const enclosure in enclosureTypes) {
+  //   if (enclosureTypes.hasOwnProperty(enclosure)) {
+  //     resultString += `${enclosure} - ${enclosureTypes[enclosure].join(', ')}\n`;
+  //   }
+  // }
+  // console.log(resultString);
+  let selectedAnimals = [];
+  let selectedNames = [];
+  countAnimals = 0
+  zooDatabase.forEach(animal => {
+    if (select.options[select.selectedIndex].value == animal.enclosure) {
+      selectedAnimals.push(animal.name);
+      selectedNames = selectedNames.concat(animal.names);
+      countAnimals += animal.count;
     }
+    document.getElementById("possibleAnimals").value = selectedAnimals.join(", ");
+    document.getElementById("currentAnimals").value = selectedNames.join(", ");
+    document.getElementById("animalCount").value = countAnimals;
+  })
+
+})
+
+document.getElementById("animalCount").addEventListener("change", () => {
+  if (document.getElementById("animalCount").value == countAnimals - 1) {
+    prompt("Кто-то сдох? Запишите статус (умер, съеден, продан)");
   }
-  console.log(resultString);
+  countAnimals = document.getElementById("animalCount").value;
+
 })
 
 function generateReport() {

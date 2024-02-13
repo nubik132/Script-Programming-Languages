@@ -17,7 +17,17 @@ app.get('/api/zoo', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => { res.sendFile(__dirname + "/index.html")})
+app.get('/', (req, res) => { res.sendFile(__dirname + "/index.html") })
+// const urlencodedParser = express.urlencoded({ extended: false });
+const jsonParser = express.json();
+app.post('/', jsonParser, function (request, response) {
+  fs.writeFile("./zooDatabase.json", JSON.stringify(request.body), function (error) {
+    if (error) {  // если ошибка
+      return console.log(error);
+    }
+    console.log("Файл успешно записан");
+  });
+})
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

@@ -26,7 +26,16 @@ function onStatusChanged() {
     deletedAnimals.push(findAnimal(this.animal));
     deleteAnimal(this.animal);
   }
+  else {
+    addAnimal(deletedAnimals.find(animal => animal.name == this.animal), prompt("Введите вид животного"));
+    deletedAnimals = deletedAnimals.filter(animal => {
+      let animalName = animal.name + "";
+      let name = this.animal + "";
+      return animalName != name;
+    });
+  }
   sendZoo();
+  searchAnimals();
 }
 
 function searchAnimals() {
@@ -43,6 +52,9 @@ function searchAnimals() {
   for (const animal of searchResults) {
 
     for (const name of animal.names) {
+      if (name.status != "Жив") {
+        continue;
+      }
       let tr = document.createElement("tr");
       let td_animal = document.createElement("td");
       let td_enclosure = document.createElement("td");
@@ -56,27 +68,46 @@ function searchAnimals() {
       newStatusSelect.addEventListener('change', onStatusChanged)
       td_status.appendChild(newStatusSelect);
       td_name.innerText = name.name;
-      td_count.innerText = animal.count;
+      td_count.innerText = animal.names.length;
       tr.appendChild(td_animal);
       tr.appendChild(td_enclosure);
-      tr.appendChild(td_status);
       tr.appendChild(td_count);
       tr.appendChild(td_name);
+      tr.appendChild(td_status);
 
       animals_table.appendChild(tr);
     }
   }
+  let tr = document.createElement("tr");
+  let td = document.createElement("td");
+  td.colSpan = 5;
+  td.innerText = "Животные не в зоопарке";
+  tr.appendChild(td);
+  animals_table.appendChild(tr);
+
   searchResults = deletedAnimals.filter(animal =>
     animal.name.toLowerCase().includes(searchTerm) || animal.status.toLowerCase().includes(searchTerm)
   );
   for (const animal of searchResults) {
     let tr = document.createElement("tr");
     let td_name = document.createElement("td");
+    td_name.colSpan = 4;
     let td_status = document.createElement("td");
     td_name.innerText = animal.name;
     let newStatusSelect = statusSelect.cloneNode(true);
     newStatusSelect.animal = animal.name;
-    newStatusSelect.addEventListener('change', onStatusChanged)
+    newStatusSelect.addEventListener('change', onStatusChanged);
+    switch (animal.status) {
+      case "Умер":
+        newStatusSelect.selectedIndex = 1;
+        break;
+      case "Съеден":
+        newStatusSelect.selectedIndex = 2;
+        break;
+      case "Продан":
+        newStatusSelect.selectedIndex = 3;
+        break;
+    }
     td_status.appendChild(newStatusSelect);
     tr.appendChild(td_name);
     tr.appendChild(td_status);
@@ -143,7 +174,12 @@ function findAnimal(name) {
 }
 
 function deleteAnimal(name) {
-  zooDatabase.forEach(animal => animal.names.filter(naming => naming != name));
+  zooDatabase.forEach(animal => animal.names.filter(naming => naming.name != name));
+}
+
+function addAnimal(animal, specie) {
+  let row = zooDatabase.find(animal => animal.name == specie);
+  row.names.push(animal);
 }
 
 function generateReport() {

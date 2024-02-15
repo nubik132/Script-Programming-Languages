@@ -1,17 +1,33 @@
 // Вызов функции при загрузке страницы
 
 var zooDatabase = [];
+var deletedAnimals = [];
 
 async function initDatabase() {
   let promise = await fetch("http://localhost:3000/api/zoo");
-  zooDatabase = await promise.json();
+  let json = await promise.json();
+  zooDatabase = json[0];
+  deletedAnimals = json[1];
   populateSelect();
 }
 
 initDatabase();
 
 
+var statusSelect = document.createElement("select");
+statusSelect.add(new Option("Жив", "Жив"));
+statusSelect.add(new Option("Умер", "Умер"));
+statusSelect.add(new Option("Съеден", "Съеден"));
+statusSelect.add(new Option("Продан", "Продан"));
 
+function onStatusChanged() {
+  findAnimal(this.animal).status = this.value;
+  if (this.value != "Жив") {
+    deletedAnimals.push(findAnimal(this.animal));
+    deleteAnimal(this.animal);
+  }
+  sendZoo();
+}
 
 function searchAnimals() {
   let searchTerm = document.getElementById('searchInput').value.toLowerCase();
@@ -35,7 +51,10 @@ function searchAnimals() {
       let td_count = document.createElement("td");
       td_animal.innerText = animal.name;
       td_enclosure.innerText = animal.enclosure;
-      td_status.innerText = name.status;
+      let newStatusSelect = statusSelect.cloneNode(true);
+      newStatusSelect.animal = name.name;
+      newStatusSelect.addEventListener('change', onStatusChanged)
+      td_status.appendChild(newStatusSelect);
       td_name.innerText = name.name;
       td_count.innerText = animal.count;
       tr.appendChild(td_animal);
@@ -46,6 +65,22 @@ function searchAnimals() {
 
       animals_table.appendChild(tr);
     }
+  }
+  searchResults = deletedAnimals.filter(animal =>
+    animal.name.toLowerCase().includes(searchTerm) || animal.status.toLowerCase().includes(searchTerm)
+  );
+  for (const animal of searchResults) {
+    let tr = document.createElement("tr");
+    let td_name = document.createElement("td");
+    let td_status = document.createElement("td");
+    td_name.innerText = animal.name;
+    let newStatusSelect = statusSelect.cloneNode(true);
+    newStatusSelect.animal = animal.name;
+    newStatusSelect.addEventListener('change', onStatusChanged)
+    td_status.appendChild(newStatusSelect);
+    tr.appendChild(td_name);
+    tr.appendChild(td_status);
+    animals_table.appendChild(tr);
   }
 }
 const select = document.getElementById("animal_select");
@@ -89,23 +124,31 @@ document.getElementById("animalCount").addEventListener("change", () => {
   if (document.getElementById("animalCount").value == countAnimals - 1) {
     let disapearedAnimalName = prompt("Запишите имя исчезнувшего животного");
     let status = prompt("Запишите статус этого животного (умер, съеден, продан)");
-    // zooDatabase.forEach(animal => {
-    //   if (animal.enclosure == select.options[select.selectedIndex].value) {
-    //     animal.status = status;
-    //   }
-    // })
-    let disapearedAnimal = zooDatabase.findIndex(animal => animal.names.find(name => name.name == disapearedAnimalName));
-    console.log(disapearedAnimal);
-    let animal = zooDatabase[disapearedAnimal].names.findIndex(name => name.name == disapearedAnimal);
-    zooDatabase[disapearedAnimal].names[animal].status = status;
+    findAnimal(disapearedAnimalName).status = status;
   }
   countAnimals = document.getElementById("animalCount").value;
-
+  sendZoo();
 })
+
+function findAnimal(name) {
+  let findedAnimal = undefined;
+  zooDatabase.forEach((animal) => {
+    let result = animal.names.find(animalName => animalName.name == name);
+    if (result) {
+      findedAnimal = result;
+      return;
+    }
+  })
+  return findedAnimal;
+}
+
+function deleteAnimal(name) {
+  zooDatabase.forEach(animal => animal.names.filter(naming => naming != name));
+}
 
 function generateReport() {
   let date = document.getElementById('dateInput').value;
-  let enclosure = document.getElementById('enclosureInput').value;
+  let enclosure = select.options[select.selectedIndex].value;
   let possibleAnimals = document.getElementById('possibleAnimals').value;
   let currentAnimals = document.getElementById('currentAnimals').value;
   let animalCount = document.getElementById('animalCount').value;
@@ -129,7 +172,7 @@ async function sendZoo() {
   const response = await fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(zooDatabase)
+    body: JSON.stringify({ 0: zooDatabase, 1: deletedAnimals })
   });
   const responseText = await response.text();
 }

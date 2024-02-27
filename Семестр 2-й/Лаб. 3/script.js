@@ -57,17 +57,22 @@ function addToAddingArray() {
     let input = document.getElementById("input");
     let addingArrayHtml = document.getElementById("adding-array");
     addingArray = input.value.split("\n").map(str => str.split(", "));
+    let transposedArray = transposeArray(addingArray);
     addingArrayHtml.innerText = addingArray.map(array => "[" + array.join(", ") + "]").join("\n");
+    let transpose = document.getElementById("transpose");
+    transpose.innerText = transposedArray.map(array => "[" + array.join(", ") + "]").join("\n");
 }
 
-function transposeArray(array, arrayLength) {
+function transposeArray(array) {
     var newArray = [];
-    for (var i = 0; i < array.length; i++) {
+    for (var i = 0; i < array[0].length; i++) {
         newArray.push([]);
     };
 
     for (var i = 0; i < array.length; i++) {
-        for (var j = 0; j < arrayLength; j++) {
+        console.log(array[i].length);
+        console.log(array);
+        for (var j = 0; j < array[i].length; j++) {
             newArray[j].push(array[i][j]);
         };
     };

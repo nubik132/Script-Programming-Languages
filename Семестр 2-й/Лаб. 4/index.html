@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        text-align: center;
+    }
+
+    .container p {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        color: white;
+        -webkit-text-stroke: 1px #000000;
+    }
+
+    .container .time {
+        font-family: monospace;
+        font-weight: 100;
+        font-size: xx-large;
+        color: black;
+        -webkit-text-stroke: white;
+    }
+</style>
+
+<body>
+    <div class="current-time container">
+        <p>Текущее время</p>
+        <p id="current-time" class="time"></p>
+    </div>
+    <div class="seconds-from-2009 container">
+        <p>Секунд с 2009</p>
+        <p id="seconds-from-2009" class="time"></p>
+    </div>
+    <div class="difference container">
+        <p>Разница в днях</p>
+        <div class="inputs">
+            <input type="date" name="first-dif" id="first-dif">
+            <input type="date" name="second-dif" id="second-dif">
+        </div>
+        <p id="difference" class="time"></p>
+    </div>
+    <div class="day-and-month container">
+        <p>День и месяц</p>
+        <input type="date" name="day-and-month-input" id="day-and-month-input">
+        <p id="day-and-month" class="time"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,7 +1,10 @@
+const category = document.getElementById("category");
+const search = document.getElementById("search");
+
 async();
 
 async function async(){
-    let response = await fetch("https://newsapi.org/v2/everything?q=tesla&from=2024-01-27&sortBy=publishedAt&apiKey=844d5795b1734116bcae513b4dfbe504");
+    let response = await fetch(`https://newsapi.org/v2/everything?q=${search.value}&from=2024-01-27&sortBy=publishedAt&apiKey=844d5795b1734116bcae513b4dfbe504&category=${category.options[category.options.selectedIndex]}`);
     let json = await response.json();
     for (const art of json.articles) {
         let h2 = document.createElement("h2")

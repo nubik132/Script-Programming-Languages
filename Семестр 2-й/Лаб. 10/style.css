@@ -1,0 +1,109 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #292525;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #c02c38;
+}
+
+#news-container {
+    background-color: rgb(61, 55, 55);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.news-item {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.news-item:hover {
+    background-color: rgb(99, 95, 95);
+}
+
+.news-item h3 {
+    color: #d14444;
+}
+
+.news-item p {
+    color: rgb(255, 255, 255);
+    margin-top: 5px;
+}
+
+#comment-section {
+    background-color: rgb(58, 48, 48);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #257c49;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+#comments-container {
+    background-color: #232627;
+    color: #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#comments-container div {
+    background-color: rgb(43, 37, 37);
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#comments-container div:hover {
+    background-color: #332e2e;
+}

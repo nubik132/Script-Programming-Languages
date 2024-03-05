@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.container{
+    margin: 0 auto;
+    width: 800px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    padding: 30px;
+    font-weight: lighter;
+}
+.box{
+    padding: 15px;
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="default box">
+            <h2>Нормальные приборы</h2>
+            <input type="button" value="Норм. свет" id="normal_light" onclick="setNormalLight()">
+            <input type="button" value="Норм. микроволновка" id="normal_microwave" onclick="setNormalMicrowave()">
+            <input type="button" value="Норм. телевизор" id="normal_tv" onclick="setNormalTv()">
+        </div>
+        <div class="fool box">
+            <h2>Дурацкие приборы</h2>
+            <input type="button" value="Идиотский свет" id="foolish_light" onclick="setFoolishLight()">
+            <input type="button" value="Дебильная микроволновка" id="foolish_microwave" onclick="setFoolishMicrowave()">
+            <input type="button" value="Тупое тиливизер" id="foolish_tv" onclick="setFoolishTv()">
+        </div>
+        <div class="fool box">
+            <h2>Пульт</h2>
+            <input type="button" value="Вкл. свет" id="foolish_light" onclick="smartDevice.lightOn()">
+            <input type="button" value="Вкл. микроволновку" id="foolish_microwave" onclick="smartDevice.microwaveOn()">
+            <input type="button" value="Вкл. телевизор" id="foolish_tv" onclick="smartDevice.tvOn()">
+            <br>
+            <input type="button" value="Выкл. свет" id="foolish_light" onclick="smartDevice.lightOff()">
+            <input type="button" value="Выкл. микроволновку" id="foolish_microwave" onclick="smartDevice.microwaveOff()">
+            <input type="button" value="Выкл. телевизор" id="foolish_tv" onclick="smartDevice.tvOff()">
+        </div>
+    </div>
+    <script src="./SmartHouse.js"></script>
+</body>
+</html>

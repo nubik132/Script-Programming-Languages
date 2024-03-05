@@ -155,7 +155,10 @@ document.getElementById("animalCount").addEventListener("change", () => {
   if (document.getElementById("animalCount").value == countAnimals - 1) {
     let disapearedAnimalName = prompt("Запишите имя исчезнувшего животного");
     let status = prompt("Запишите статус этого животного (умер, съеден, продан)");
-    findAnimal(disapearedAnimalName).status = status;
+    let disapearedAnimal = findAnimal(disapearedAnimalName);
+    disapearedAnimal.status = status;
+    deletedAnimals.push(disapearedAnimal);
+    deleteAnimal(disapearedAnimal.name);
   }
   countAnimals = document.getElementById("animalCount").value;
   sendZoo();
@@ -197,7 +200,7 @@ function generateReport() {
       Возможные обитатели вольера: ${possibleAnimals}
       Текущие виды животных и их имена в вольере: ${currentAnimals}
       Количество животных в вольере: ${animalCount}
-      Какого черта в вольере с пингвинами делает слон: ${elephantAction}
+      Дополнительная информация: ${elephantAction}
     `;
 
   // Сохранение отчета в текстовый файл

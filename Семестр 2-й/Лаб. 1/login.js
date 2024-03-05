@@ -2,7 +2,7 @@ loadCookie()
 
 function loadCookie() {
     let users = ["alex2000", "mariaAAA37"];
-    for (const user of users) {
+    for (const user of users) { 
         User.users.push(JSON.parse(getCookie(user)));
     }
     console.log(User.users);

@@ -7,8 +7,8 @@ function checkAutorization() {
 
 function saveUser(user) {
     let userJson = JSON.stringify(user);
-    let cookieUser = JSON.parse(getCookie(user.login));
-    if (cookieUser == undefined || cookieUser.login != user.login) {
+    let cookieUser = getCookie(user.login);
+    if (cookieUser == undefined) {
         setCookie(user.login, userJson);
     }
 }

@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
+    <title>Новости</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-    
-</body>
+<div class="container">
+    <h1>Новости</h1>
 
+    <section id="news-container">
+    </section>
+
+    <section id="comment-section">
+        <h2>Комментарий</h2>
+        <form id="comment-form">
+            <label for="comment">Ваш комментарий:</label>
+            <textarea id="comment" rows="4" cols="50"></textarea>
+            <br>
+            <button type="button" onclick="submitComment()">Отправить</button>
+        </form>
+
+        <section id="comments-container">
+        </section>
+    </section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="app.js"></script>
+</body>
 </html>

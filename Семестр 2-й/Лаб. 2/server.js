@@ -29,6 +29,9 @@ app.post('/', jsonParser, function (request, response) {
   });
 })
 
+app.get('/style.css', (req, res) => { res.sendFile(__dirname + "/style.css") })
+app.get('/script.js', (req, res) => { res.sendFile(__dirname + "/script.js") })
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
